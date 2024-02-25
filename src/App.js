@@ -1,16 +1,17 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
-import LeftBar from "./components/LeftBar";
-import Feed from "./components/Feed";
-import RightBar from "./components/RightBar";
+import { Routes, Route } from "react-router-dom";
+import Dashboard from "./components/Dashboard";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <LeftBar />
-      <Feed />
-      <RightBar />
+      <Routes>
+        <Route path="/*" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
     </div>
   );
 }

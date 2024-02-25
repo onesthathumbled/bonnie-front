@@ -5,8 +5,15 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import "../styles/Navbar.css";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const activeLinkStyle = {
+    color: "#fefefe",
+  };
+
+  const location = useLocation();
+
   return (
     <div className="Navbar">
       <div className="Logo">
@@ -18,15 +25,28 @@ const Navbar = () => {
       </div>
 
       <div className="Links">
-        <a className="MyProjects" href="/">
+        <NavLink
+          to="/"
+          style={location.pathname === "/" ? activeLinkStyle : {}}
+          end
+          className="GrayA"
+        >
           Dashboard
-        </a>
-        <a className="GrayA" href="/">
+        </NavLink>
+        <NavLink
+          to="/categories"
+          style={location.pathname === "/categories" ? activeLinkStyle : {}}
+          className="GrayA"
+        >
           Categories
-        </a>
-        <a className="GrayA" href="/">
+        </NavLink>
+        <NavLink
+          to="/tasks"
+          style={location.pathname === "/tasks" ? activeLinkStyle : {}}
+          className="GrayA"
+        >
           Tasks
-        </a>
+        </NavLink>
       </div>
 
       <div className="Form">

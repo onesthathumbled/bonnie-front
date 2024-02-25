@@ -3,7 +3,7 @@
   margin-left: 180px;
   margin-top: 86px;
   width: 1350px;
-  height: 500vh;
+  /* height: 500vh; */
 }
 
 .TopInfo {
@@ -253,7 +253,7 @@
 }
 
 .TaskStat {
-  font-size: 14px;
+  font-size: 12px;
   padding: 3px 10px;
   font-weight: 600;
   border-radius: 20px;
