@@ -81,63 +81,63 @@ const Feed = () => {
       </div>
 
       <div className="AllTasks">
-        <div className="Task-Backlog">
-          <div>
+        <div className="Task-Backlog ATcon">
+          <div className="BTNside">
             <button>
-              <p>Backlog</p>
-              <p>9</p>
+              <p className="ATbacklog">Backlog</p>
+              <p className="ATnum1">9</p>
             </button>
-            <MoreVertRoundedIcon />
+            <MoreVertRoundedIcon className="ATics" />
           </div>
           <div className="Task1">
             <div>
-              <p>Low</p>
-              <MoreHorizRoundedIcon />
+              <p className="TaskStat low">Low</p>
+              <MoreHorizRoundedIcon className="TaskMainIcs" />
             </div>
 
-            <p>Task Title</p>
-            <p>I want to see task details here.</p>
-            <p>Date here</p>
+            <p className="TaskMainTitle">Task Title</p>
+            <p className="TaskMainSub">I want to see task details here.</p>
+            <p className="TaskMainDate">02/28/24</p>
           </div>
         </div>
 
-        <div className="Task-In-Progress">
-          <div>
+        <div className="Task-In-Progress ATcon">
+          <div className="BTNside">
             <button>
-              <p>In Progress</p>
-              <p>8</p>
+              <p className="ATinprogress">In Progress</p>
+              <p className="ATnum2">8</p>
             </button>
-            <MoreVertRoundedIcon />
+            <MoreVertRoundedIcon className="ATics" />
           </div>
-          <div className="Task1">
+          <div className="Task1 ">
             <div>
-              <p>High</p>
-              <MoreHorizRoundedIcon />
+              <p className="TaskStat high">High</p>
+              <MoreHorizRoundedIcon className="TaskMainIcs" />
             </div>
 
-            <p>Task Title</p>
-            <p>I want to see task details here.</p>
-            <p>Date here</p>
+            <p className="TaskMainTitle">Task Title</p>
+            <p className="TaskMainSub">I want to see task details here.</p>
+            <p className="TaskMainDate">02/28/24</p>
           </div>
         </div>
 
-        <div className="Task-Completed">
-          <div>
+        <div className="Task-Completed ATcon">
+          <div className="BTNside">
             <button>
-              <p>Completed</p>
-              <p>11</p>
+              <p className="ATcompleted">Completed</p>
+              <p className="ATnum3">11</p>
             </button>
-            <MoreVertRoundedIcon />
+            <MoreVertRoundedIcon className="ATics" />
           </div>
           <div className="Task1">
             <div>
-              <p>Medium</p>
-              <MoreHorizRoundedIcon />
+              <p className="TaskStat medium">Medium</p>
+              <MoreHorizRoundedIcon className="TaskMainIcs" />
             </div>
 
-            <p>Task Title</p>
-            <p>I want to see task details here.</p>
-            <p>Date here</p>
+            <p className="TaskMainTitle">Task Title</p>
+            <p className="TaskMainSub">I want to see task details here.</p>
+            <p className="TaskMainDate">02/28/24</p>
           </div>
         </div>
       </div>
