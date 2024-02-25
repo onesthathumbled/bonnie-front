@@ -5,6 +5,7 @@ import FolderRoundedIcon from "@mui/icons-material/FolderRounded";
 import AccessTimeFilledRoundedIcon from "@mui/icons-material/AccessTimeFilledRounded";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
+import "../styles/LeftBar.css";
 
 const LeftBar = () => {
   return (

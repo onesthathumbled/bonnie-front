@@ -1,0 +1,127 @@
+.RightBar {
+  /* background-color: red; */
+  /* background-color: #1f2029; */
+  position: fixed;
+  top: 86px;
+  right: 0;
+  width: 293px;
+  height: 100vh;
+  padding-right: 23px;
+}
+
+.Tips-Top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fefefe;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.HorizonIcon {
+  color: #77777d;
+}
+
+.Details {
+  background-color: #272a34;
+  padding: 40px 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.Details .Title {
+  color: #fefefe;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.Details .Sub {
+  color: #77777d;
+  font-size: 14px;
+}
+
+.Details .Ics {
+  display: flex;
+  margin-top: 25px;
+  justify-content: space-between;
+  color: #2d4844;
+  align-items: center;
+}
+
+.Details .FirstIc {
+  color: #5ae266;
+}
+
+.Details .ArrowIc {
+  color: #fefefe;
+  background-color: #1f2029;
+  border-radius: 20px;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.RightBarHr {
+  margin-top: 30px;
+  border-bottom: 2px solid #181b1f;
+}
+
+.RecentActivities {
+  margin-top: 20px;
+}
+
+.RCflex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.RClink {
+  color: #c280d2;
+  font-size: 14px;
+}
+
+.RecentActivities .Title {
+  color: #fefefe;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.Activity {
+  background-color: #272a34;
+  padding: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+}
+
+.Activity .FirstTaskTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.Activity .TaskTitle {
+  color: #fefefe;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.Activity .TaskTime {
+  font-size: 12px;
+  color: #77777d;
+}
+
+.Activity .TaskDetails {
+  color: #77777d;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.Activity .TaskStatus {
+  color: #5ae266;
+  font-size: 12px;
+}

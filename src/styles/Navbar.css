@@ -164,6 +164,11 @@
   font-size: 14px;
 }
 
+.Settings {
+  display: flex;
+  align-items: center;
+}
+
 .SettingsButton {
   border: none;
 }
@@ -178,4 +183,33 @@
 .NotificationIcon:hover {
   background-color: #272a34;
   border-radius: 50%;
+}
+
+@media (max-width: 1540px) {
+  .Navbar {
+    justify-content: space-around;
+  }
+  .Links {
+    display: none;
+  }
+
+  .Profile {
+    display: none;
+  }
+}
+
+@media (max-width: 1070px) {
+  .AddTask {
+    display: none;
+  }
+
+  .Form-Group input {
+    width: 500px;
+  }
+}
+
+@media (max-width: 855px) {
+  .SettingsButton {
+    display: none;
+  }
 }

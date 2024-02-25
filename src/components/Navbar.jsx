@@ -19,13 +19,13 @@ const Navbar = () => {
 
       <div className="Links">
         <a className="MyProjects" href="/">
-          My Projects
+          Dashboard
         </a>
         <a className="GrayA" href="/">
-          Schedule
+          Categories
         </a>
         <a className="GrayA" href="/">
-          Team
+          Tasks
         </a>
       </div>
 
@@ -34,7 +34,10 @@ const Navbar = () => {
           <button>
             <SearchRoundedIcon className="SearchRounded" />
           </button>
-          <input type="text" placeholder="Search category, task..." />
+          <input
+            type="text"
+            placeholder="Search name, category, task, etc..."
+          />
         </form>
       </div>
 

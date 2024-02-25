@@ -1,0 +1,38 @@
+.LeftBar {
+  /* background-color: red; */
+  background-color: #1f2029;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 86px;
+  height: 100vh;
+  width: 5%;
+}
+
+.TButton {
+  background-color: transparent;
+  margin: 40px 0;
+}
+
+.TButton button {
+  background-color: #ffa34f;
+  border: none;
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-family: "Poppins";
+  font-size: 20px;
+  color: #fefefe;
+  cursor: pointer;
+}
+
+.Left-Icons {
+  display: flex;
+  flex-direction: column;
+}
+
+.Left-Icons > * {
+  color: #6f7580;
+  margin: 15px 0;
+  cursor: pointer;
+}

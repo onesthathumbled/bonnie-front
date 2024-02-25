@@ -1,0 +1,169 @@
+.Feed {
+  /* background-color: red; */
+  margin-left: 180px;
+  margin-top: 86px;
+  width: 1350px;
+  height: 500vh;
+}
+
+.TopInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.InfoP {
+  color: #fefefe;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.Tasks {
+  display: flex;
+  color: #fefefe;
+}
+
+.Tasks .box {
+  margin-right: 15px;
+  padding: 20px 30px;
+  border-radius: 20px;
+}
+
+.TBoxTitle {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.TBoxNum {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.TBoxNum span {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.Backlog {
+  background-color: #ffa34f;
+}
+
+.In-Progress {
+  background-color: #c180d1;
+}
+
+.Completed {
+  background-color: #43b97f;
+}
+
+/* Category */
+
+.CategoryFlex {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.CategoryList {
+  display: flex;
+}
+
+.CategoryP {
+  color: #fefefe;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.CategoryA {
+  color: #c280d2;
+  font-size: 14px;
+}
+
+.CategoryBox {
+  margin-right: 15px;
+  padding: 20px 30px;
+  border-radius: 20px;
+  background-color: #272a34;
+  color: #fefefe;
+}
+
+.CategoryBox div {
+  display: flex;
+}
+
+.emoji {
+  background-color: #181818;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 50px;
+  margin-bottom: 5px;
+}
+
+.CategoryText {
+  margin-right: 10px;
+  font-weight: 600;
+}
+
+.CategoryNum {
+  color: #77777d;
+  font-size: 14px;
+}
+
+.Justline {
+  margin-top: 30px;
+  border-bottom: 2px solid #181b1f;
+}
+
+/* AllMyTasks */
+.AllMyTasks {
+  margin-top: 20px;
+}
+
+.AMTcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.AMTlinker {
+  color: #fefefe;
+  display: flex;
+  align-items: center;
+  background-color: #272a34;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.AMTlinkericon {
+  margin-left: 10px;
+}
+
+.AMTtitle {
+  display: flex;
+  align-items: center;
+  font-size: 50px;
+  font-weight: 500;
+  color: #fefefe;
+}
+
+.AMTicon {
+  font-size: 12px;
+  margin-left: 15px;
+  background-color: #342e30;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+.AMTp {
+  color: #77777d;
+}
+
+/* AllTasks */
+
+.AllTasks {
+  margin-top: 30px;
+}

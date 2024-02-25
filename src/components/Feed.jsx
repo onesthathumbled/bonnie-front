@@ -3,61 +3,81 @@ import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRigh
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import MoreHorizRoundedIcon from "@mui/icons-material/MoreHorizRounded";
 import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
+import "../styles/Feed.css";
 
 const Feed = () => {
   return (
     <div className="Feed">
-      <div className="Tasks">
-        <div className="Backlog">
-          <p>Backlog</p>
-          <div>| 9 Task</div>
-        </div>
+      <div className="TopInfo">
+        <div className="Information">
+          <p className="InfoP">Information</p>
+          <div className="Tasks">
+            <div className="Backlog box">
+              <p className="TBoxTitle">Backlog</p>
+              <div className="TBoxNum">
+                | 9 <span>Task</span>
+              </div>
+            </div>
 
-        <div className="In-Progress">
-          <p>In Progress</p>
-          <div>| 8 Task</div>
-        </div>
+            <div className="In-Progress box">
+              <p className="TBoxTitle">In Progress</p>
+              <div className="TBoxNum">
+                | 8 <span>Task</span>
+              </div>
+            </div>
 
-        <div className="Completed">
-          <p>Completed</p>
-          <div>| 11 Task</div>
-        </div>
-      </div>
-
-      <div>
-        <p>Category Task</p>
-        <a href="/">See All Category</a>
-      </div>
-
-      <div>
-        <div className="Personal">
-          <p>🔥</p>
-          <div>
-            <p>Personal</p>
-            <KeyboardArrowRightRoundedIcon />
+            <div className="Completed box">
+              <p className="TBoxTitle">Completed</p>
+              <div className="TBoxNum">
+                | 11 <span>Task</span>
+              </div>
+            </div>
           </div>
-          <p>11 Tasks</p>
         </div>
 
-        <div className="Personal">
-          <p>🏢</p>
-          <div>
-            <p>Business</p>
-            <KeyboardArrowRightRoundedIcon />
+        <div className="Category">
+          <div className="CategoryFlex">
+            <p className="CategoryP">Category Task</p>
+            <a href="/" className="CategoryA">
+              See All Category
+            </a>
           </div>
-          <p>9 Tasks</p>
+
+          <div className="CategoryList">
+            <div className="CategoryBox">
+              <p className="emoji">🔥</p>
+              <div>
+                <p className="CategoryText">Personal</p>
+                <KeyboardArrowRightRoundedIcon className="CategoryIcs" />
+              </div>
+              <p className="CategoryNum">11 Tasks</p>
+            </div>
+
+            <div className="CategoryBox">
+              <p className="emoji">🏢</p>
+              <div>
+                <p className="CategoryText">Business</p>
+                <KeyboardArrowRightRoundedIcon className="CategoryIcs" />
+              </div>
+              <p className="CategoryNum">9 Tasks</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div>
-        <div>
-          <p>All My Tasks✏️</p>
-          <a href="/">
+      <div className="Justline"></div>
+
+      <div className="AllMyTasks">
+        <div className="AMTcontainer">
+          <p className="AMTtitle">
+            All My Tasks<span className="AMTicon">✏️</span>
+          </p>
+          <a className="AMTlinker" href="/">
             See All Task
-            <ArrowForwardRoundedIcon />
+            <ArrowForwardRoundedIcon className="AMTlinkericon" />
           </a>
         </div>
-        <p>Managing your tasks is easy with Task Management</p>
+        <p className="AMTp">Managing your tasks is easy with Task Management</p>
       </div>
 
       <div className="AllTasks">
