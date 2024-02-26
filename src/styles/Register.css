@@ -1,0 +1,74 @@
+.Register {
+  /* display: flex;
+  align-items: center;
+  justify-content: flex-end; */
+  top: 0;
+  right: 0;
+  position: fixed;
+  margin-top: 80px;
+  margin-right: 150px;
+}
+
+.RTitle {
+  text-align: center;
+}
+
+.RLogo {
+  font-size: 18px !important;
+}
+
+.RTitle p {
+  color: #fefefe;
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+.RForm label {
+  color: #fefefe;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.RForm input {
+  margin-top: 5px;
+  outline: none;
+  border: none;
+  background-color: #272a34;
+  width: fit-content;
+  padding: 15px 100px;
+  padding-left: 20px;
+  border-radius: 10px;
+  color: #fefefe;
+  margin-bottom: 15px;
+  transition: all 0.3s;
+  font-family: "Poppins";
+}
+
+.RForm input:hover,
+.RForm input:focus {
+  background-color: #181818;
+}
+
+.RFormSubmit button {
+  text-align: center;
+  background-color: #181818;
+  padding: 15px 115px;
+  border: none;
+  color: #fefefe;
+  font-size: 15px;
+  font-family: "Poppins";
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.RFormLogin {
+  color: #c280d2;
+  font-size: 14px;
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+  text-decoration: underline;
+}

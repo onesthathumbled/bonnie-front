@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import "../styles/Navbar.css";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, reset } from "../features/auth/authSlice";
 
 const Navbar = () => {
   const activeLinkStyle = {
@@ -13,6 +15,18 @@ const Navbar = () => {
   };
 
   const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { user } = useSelector((state) => state.auth);
+
+  const onLogout = (e) => {
+    e.preventDefault();
+
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/");
+  };
 
   return (
     <div className="Navbar">
@@ -72,13 +86,15 @@ const Navbar = () => {
       <div className="Profile">
         <AccountCircleRoundedIcon className="AccountIcon" fontSize="large" />
         <div className="AccountBg">
-          <p className="AccountName">Jai Madera</p>
+          <p className="AccountName">
+            {user && `${user.data.first_name} ${user.data.last_name}`}
+          </p>
           <p className="AccountGreetings">Have a nice day!👋</p>
         </div>
       </div>
 
       <div className="Settings">
-        <button className="SettingsButton">
+        <button className="SettingsButton" onClick={onLogout}>
           <SettingsRoundedIcon className="SettingsIcon" />
         </button>
       </div>

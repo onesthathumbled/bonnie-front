@@ -1,0 +1,38 @@
+/* Spinner.css */
+.spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Adjust height based on your needs */
+}
+
+.spinner {
+  border: 5px solid;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 4s linear infinite; /* Adjust duration and timing function based on your needs */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    border-color: #ff7575;
+  }
+  25% {
+    transform: rotate(90deg);
+    border-color: #ff9d7e;
+  }
+  50% {
+    transform: rotate(180deg);
+    border-color: #ffa34f;
+  }
+  75% {
+    transform: rotate(270deg);
+    border-color: #ff9d7e;
+  }
+  100% {
+    transform: rotate(360deg);
+    border-color: #43b97f;
+  }
+}

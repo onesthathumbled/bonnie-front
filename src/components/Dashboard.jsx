@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import LeftBar from "./LeftBar";
 import Feed from "./Feed";
@@ -7,12 +7,24 @@ import { Route, Routes } from "react-router-dom";
 import Categories from "./Categories";
 import Category from "./Category";
 
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 const Dashboard = () => {
   const categories = [
     { id: 1, name: "Category 1" },
     { id: 2, name: "Category 2" },
     // Add more categories as needed
   ];
+
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
 
   return (
     <div>
@@ -21,7 +33,7 @@ const Dashboard = () => {
       <Routes>
         <Route path="/" element={<Feed />} />
         <Route
-          path="/categories/"
+          path="/categories"
           element={<Categories categories={categories} />}
         />
         <Route path="/categories/:category_id" element={<Category />} />
