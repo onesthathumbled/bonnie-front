@@ -1,6 +1,134 @@
 .Categories {
+  /* background-color: red; */
+  margin-left: 180px;
+  margin-top: 86px;
+  width: 1300px;
+}
+
+.CFlex {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  background-color: #272a34;
+  padding: 20px;
+  padding-top: 5px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  /* box-sizing: border-box; */
+}
+
+.CLi {
+  margin: 0 10px;
+  margin-top: 20px;
+  background-color: #1f2029;
+  border-radius: 20px;
+  padding: 20px;
+  width: 400px;
+  height: 250px;
+  display: flex;
+  justify-content: space-between;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+.Ccat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #fefefe;
+}
+
+.CTi {
+  color: #fefefe;
+}
+
+.Cdate {
+  align-self: flex-end;
+}
+
+.middleClass {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #77777d;
+  cursor: pointer;
+}
+
+.AddCContainer {
+  background-color: rgba(24, 24, 24, 0.8);
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   height: 100vh;
+  z-index: 1;
+}
+
+.AddCTitle {
+  color: #fefefe;
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.AddCTextArea {
+  margin-top: 5px;
+  outline: none;
+  border: none;
+  background-color: #272a34;
+  width: 300px;
+  padding: 15px 100px;
+  padding-left: 20px;
+  border-radius: 10px;
+  color: #fefefe;
+  margin-bottom: 15px;
+  transition: all 0.3s;
+  font-family: "Poppins";
+  resize: none;
+  height: 200px;
+}
+
+.AddCTextArea:hover,
+.AddCTextArea:focus {
+  background-color: #181818;
+}
+
+.AddCTexto {
+  width: 300px !important;
+}
+
+.AddCButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.AddCButtons button {
+  text-align: center;
+  background-color: #272a34;
+  padding: 15px 50px;
+  border: none;
+  color: #fefefe;
+  font-size: 15px;
+  font-family: "Poppins";
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s;
+}
+
+.AddCButtons button:hover {
+  background-color: #1f2029;
+}
+
+.AddCcancel:hover {
+  background-color: #ff7575 !important;
 }
