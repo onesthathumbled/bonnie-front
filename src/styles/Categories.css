@@ -132,3 +132,41 @@
 .AddCcancel:hover {
   background-color: #ff7575 !important;
 }
+
+.OBlock {
+  position: fixed;
+  z-index: 1;
+  background-color: #272a34;
+  width: 120px;
+  color: #fefefe;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.OBlock div {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.OButtons {
+  text-align: center;
+  /* background-color: #272a34; */
+  cursor: pointer;
+  padding: 10px;
+  font-size: 14px;
+  /* border-radius: 5px; */
+  /* border-bottom: 2px solid #1f2029; */
+  /* border-right: 2px solid #1f2029; */
+  transition: all 0.2s;
+}
+
+.OBlock div:hover {
+  background-color: #c280d2;
+}
+
+.OIc {
+  margin: 0 5px;
+}

@@ -2,9 +2,13 @@ import axios from "axios";
 
 const API_URL = "http://localhost:4000";
 
-const token = JSON.parse(localStorage.getItem("authToken"));
-
 const createCategory = async (user_id, category) => {
+  const token = JSON.parse(localStorage.getItem("authToken"));
+
+  if (!token) {
+    console.error("Token not found in localStorage");
+  }
+
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -21,6 +25,12 @@ const createCategory = async (user_id, category) => {
 };
 
 const getCategories = async (user_id) => {
+  const token = JSON.parse(localStorage.getItem("authToken"));
+
+  if (!token) {
+    console.error("Token not found in localStorage");
+  }
+
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,

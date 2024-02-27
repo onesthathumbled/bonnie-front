@@ -10,6 +10,10 @@ import MoreHorizRoundedIcon from "@mui/icons-material/MoreHorizRounded";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { toast } from "react-toastify";
 
+import EditRoundedIcon from "@mui/icons-material/EditRounded";
+import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
+import RemoveRedEyeRoundedIcon from "@mui/icons-material/RemoveRedEyeRounded";
+
 const Categories = () => {
   const dispatch = useDispatch();
 
@@ -17,6 +21,13 @@ const Categories = () => {
     (state) => state.categories
   );
   const [addCategoryWindow, setAddCategoryWindow] = useState(false);
+  const [options, setOptions] = useState(false);
+  const [optionPosition, setOptionPosition] = useState({
+    x: 0,
+    y: 0,
+  });
+  const [editMenu, setEditMenu] = useState(false);
+  const [deleteMenu, setDeleteMenu] = useState(false);
 
   const [formData, setFormData] = useState({
     category_name: "",
@@ -35,6 +46,7 @@ const Categories = () => {
   const handleAddWindow = (e) => {
     e.preventDefault();
     setAddCategoryWindow((prevState) => !prevState);
+    setOptions(false);
   };
 
   useEffect(() => {
@@ -42,13 +54,19 @@ const Categories = () => {
       console.log(message);
     }
 
+    window.addEventListener("scroll", handleScroll);
+
     dispatch(getCategories());
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [dispatch, isError, message]);
 
   const handleAddCategory = async (e) => {
     e.preventDefault();
 
-    if (!category_name || !category_details) {
+    if (!category_name.trim() || !category_details.trim()) {
       toast.error("All fields are required.");
       return;
     }
@@ -63,6 +81,22 @@ const Categories = () => {
     });
 
     setAddCategoryWindow((prevState) => !prevState);
+  };
+
+  const handleContextMenu = (e, id) => {
+    e.preventDefault();
+    setOptionPosition({ x: e.clientX, y: e.clientY });
+    console.log(id);
+    setOptions(true);
+  };
+
+  const handleClose = () => {
+    setOptions(false);
+  };
+
+  const handleScroll = () => {
+    setOptions(false);
+    setAddCategoryWindow(false);
   };
 
   return (
@@ -106,32 +140,65 @@ const Categories = () => {
         </div>
       )}
 
+      {options && (
+        <div
+          className="OBlock"
+          style={{
+            left: optionPosition.x,
+            top: optionPosition.y,
+          }}
+        >
+          <div onClick={() => setEditMenu(true)}>
+            <EditRoundedIcon className="OIc" />
+            <p className="OButtons">Edit</p>
+          </div>
+
+          <div onClick={() => setDeleteMenu(true)}>
+            <DeleteRoundedIcon className="OIc" />
+            <p className="OButtons">Delete</p>
+          </div>
+
+          <div>
+            <RemoveRedEyeRoundedIcon className="OIc" />
+            <p className="OButtons">View</p>
+          </div>
+        </div>
+      )}
+
       <div className="Categories">
-        <p className="AMTtitle">Categories</p>
-        <ul className="CFlex">
-          <li className="CLi middleClass" onClick={handleAddWindow}>
+        <div className="AMTtitle">Categories</div>
+        <div className="CFlex">
+          <div className="CLi middleClass" onClick={handleAddWindow}>
             <AddRoundedIcon className="midCic" fontSize="large" />
             <p>Add a category</p>
-          </li>
-          {categories.map((category) => (
-            <li className="CLi" key={category.id}>
-              <Link to={`/categories/${category.id}`}>
-                <div className="Ccat">
-                  <p className="TaskMainTitle CTi">{category.category_name}</p>
-                  <MoreHorizRoundedIcon className="TaskMainIcs" />
-                </div>
-                <p className="TaskMainSub">
-                  {(category.category_details ?? "").length > 100
-                    ? `${category.category_details.slice(0, 100)}...`
-                    : category.category_details}
+          </div>
+          {categories &&
+            categories.map((category) => (
+              <div
+                className="CLi"
+                key={category.id}
+                onContextMenu={(e) => handleContextMenu(e, category.id)}
+                onClick={handleClose}
+              >
+                <Link to={`/categories/${category.id}`}>
+                  <div className="Ccat">
+                    <p className="TaskMainTitle CTi">
+                      {category.category_name}
+                    </p>
+                    <MoreHorizRoundedIcon className="TaskMainIcs" />
+                  </div>
+                  <p className="TaskMainSub">
+                    {(category.category_details ?? "").length > 100
+                      ? `${category.category_details.slice(0, 100)}...`
+                      : category.category_details}
+                  </p>
+                </Link>
+                <p className="TaskMainDate Cdate">
+                  {new Date(category.created_at).toLocaleDateString()}
                 </p>
-              </Link>
-              <p className="TaskMainDate Cdate">
-                {new Date(category.created_at).toLocaleDateString()}
-              </p>
-            </li>
-          ))}
-        </ul>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
