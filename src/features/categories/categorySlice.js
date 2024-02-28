@@ -3,6 +3,7 @@ import categoryService from "./categoryService";
 
 const initialState = {
   categories: [],
+  category: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -32,6 +33,23 @@ export const getCategories = createAsyncThunk(
     try {
       const user_id = thunkAPI.getState().auth.user.data.id;
       return await categoryService.getCategories(user_id);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const getCategory = createAsyncThunk(
+  "auth/getCategory",
+  async (id, thunkAPI) => {
+    try {
+      const user_id = thunkAPI.getState().auth.user.data.id;
+      return await categoryService.getCategory(user_id, id);
     } catch (error) {
       const message =
         (error.message && error.response.data && error.response.data.message) ||
@@ -110,6 +128,19 @@ export const categorySlice = createSlice({
         state.categories = action.payload;
       })
       .addCase(getCategories.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getCategory.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getCategory.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.category = action.payload;
+      })
+      .addCase(getCategory.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

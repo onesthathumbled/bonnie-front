@@ -45,6 +45,27 @@ const getCategories = async (user_id) => {
   return response.data;
 };
 
+const getCategory = async (user_id, id) => {
+  const token = JSON.parse(localStorage.getItem("authToken"));
+
+  if (!token) {
+    console.error("Token not found in localStorage");
+  }
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.get(
+    `${API_URL}/api/v1/users/${user_id}/categories/${id}`,
+    config
+  );
+
+  return response.data;
+};
+
 const editCategory = async (user_id, id, category) => {
   const token = JSON.parse(localStorage.getItem("authToken"));
 
@@ -95,6 +116,7 @@ const deleteCategory = async (user_id, id) => {
 
 const categoryService = {
   getCategories,
+  getCategory,
   createCategory,
   editCategory,
   deleteCategory,

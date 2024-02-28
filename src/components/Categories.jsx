@@ -43,6 +43,10 @@ const Categories = () => {
 
   const { category_name, category_details } = formData;
 
+  const sortedCategories = [...categories].sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -298,7 +302,7 @@ const Categories = () => {
             <p>Add a category</p>
           </div>
           {categories &&
-            categories.map((category) => (
+            sortedCategories.map((category) => (
               <div
                 className="CLi"
                 key={category.id}
@@ -308,7 +312,9 @@ const Categories = () => {
                 <Link to={`/categories/${category.id}`}>
                   <div className="Ccat">
                     <p className="TaskMainTitle CTi">
-                      {category.category_name}
+                      {(category.category_name ?? "").length > 30
+                        ? `${category.category_name.slice(0, 30)}...`
+                        : category.category_name}
                     </p>
                     <MoreHorizRoundedIcon className="TaskMainIcs" />
                   </div>

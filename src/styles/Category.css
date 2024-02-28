@@ -1,0 +1,57 @@
+.SContainer {
+  margin-top: 130px;
+  margin-left: 180px;
+  /* background-color: red; */
+  color: #fefefe;
+  width: 1300px;
+}
+
+.SBack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: #272a34;
+  color: #77777d;
+  padding: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-bottom: 25px;
+}
+
+.SBlock {
+}
+
+.STitle {
+  font-size: 50px;
+  font-weight: 500;
+  color: #fefefe;
+  line-height: 1.2;
+}
+
+.SDetails {
+  margin-top: 15px;
+  color: #77777d;
+  font-size: 18px;
+  text-align: justify;
+}
+
+.SId {
+  margin-top: 10px;
+  background-color: #272a34;
+  font-size: 14px;
+  color: #77777d;
+  padding: 5px 10px;
+  border-radius: 3px;
+  width: fit-content;
+}
+
+.SDate {
+  font-size: 12px;
+  color: #5ae266;
+  margin-top: 10px;
+  background-color: #272a34;
+  padding: 5px 10px;
+  border-radius: 3px;
+  width: fit-content;
+}
