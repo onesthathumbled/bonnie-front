@@ -5,6 +5,8 @@ import "../styles/Categories.css";
 import {
   createCategory,
   getCategories,
+  editCategory,
+  deleteCategory,
 } from "../features/categories/categorySlice";
 import MoreHorizRoundedIcon from "@mui/icons-material/MoreHorizRounded";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
@@ -28,6 +30,11 @@ const Categories = () => {
   });
   const [editMenu, setEditMenu] = useState(false);
   const [deleteMenu, setDeleteMenu] = useState(false);
+  const [categoryData, setCategoryData] = useState({
+    id: null,
+    category_name: "",
+    category_details: "",
+  });
 
   const [formData, setFormData] = useState({
     category_name: "",
@@ -43,9 +50,22 @@ const Categories = () => {
     }));
   };
 
+  const onChangeEdit = (e) => {
+    setCategoryData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   const handleAddWindow = (e) => {
     e.preventDefault();
     setAddCategoryWindow((prevState) => !prevState);
+    setOptions(false);
+  };
+
+  const handleEditWindow = (e) => {
+    e.preventDefault();
+    setEditMenu(false);
     setOptions(false);
   };
 
@@ -83,10 +103,46 @@ const Categories = () => {
     setAddCategoryWindow((prevState) => !prevState);
   };
 
-  const handleContextMenu = (e, id) => {
+  const handleEditCategory = async (e) => {
+    e.preventDefault();
+
+    if (!categoryData.category_name || !categoryData.category_details) {
+      toast.error("All fields are required.");
+    }
+
+    await dispatch(editCategory({ id: categoryData.id, categoryData }));
+
+    dispatch(getCategories());
+
+    setCategoryData({
+      id: null,
+      category_name: "",
+      category_details: "",
+    });
+
+    setEditMenu(false);
+  };
+
+  const handleDeleteCategory = async (e) => {
+    e.preventDefault();
+
+    await dispatch(deleteCategory(categoryData.id));
+
+    dispatch(getCategories());
+
+    setCategoryData({
+      id: null,
+      category_name: "",
+      category_details: "",
+    });
+
+    setDeleteMenu(false);
+  };
+
+  const handleContextMenu = (e, data) => {
     e.preventDefault();
     setOptionPosition({ x: e.clientX, y: e.clientY });
-    console.log(id);
+    setCategoryData(data);
     setOptions(true);
   };
 
@@ -148,12 +204,22 @@ const Categories = () => {
             top: optionPosition.y,
           }}
         >
-          <div onClick={() => setEditMenu(true)}>
+          <div
+            onClick={() => {
+              setEditMenu(true);
+              setOptions(false);
+            }}
+          >
             <EditRoundedIcon className="OIc" />
             <p className="OButtons">Edit</p>
           </div>
 
-          <div onClick={() => setDeleteMenu(true)}>
+          <div
+            onClick={() => {
+              setDeleteMenu(true);
+              setOptions(false);
+            }}
+          >
             <DeleteRoundedIcon className="OIc" />
             <p className="OButtons">Delete</p>
           </div>
@@ -161,6 +227,65 @@ const Categories = () => {
           <div>
             <RemoveRedEyeRoundedIcon className="OIc" />
             <p className="OButtons">View</p>
+          </div>
+        </div>
+      )}
+
+      {editMenu && (
+        <div className="AddCContainer" onContextMenu={handleEditWindow}>
+          <form className="AddCForm RForm" onSubmit={handleEditCategory}>
+            <p className="AddCTitle">Edit Category</p>
+            <div className="AddCFormGroup">
+              <label>Category Name</label>
+              <br />
+              <input
+                className="AddCTexto"
+                type="text"
+                name="category_name"
+                placeholder="Edit category name"
+                value={categoryData.category_name}
+                onChange={onChangeEdit}
+              />
+            </div>
+
+            <div className="AddCFormGroup">
+              <label>Category Details</label>
+              <br />
+              <textarea
+                className="AddCTextArea"
+                name="category_details"
+                placeholder="Edit category details"
+                value={categoryData.category_details}
+                onChange={onChangeEdit}
+              ></textarea>
+            </div>
+
+            <div className="AddCButtons">
+              <button onClick={handleEditWindow} className="AddCcancel">
+                Cancel
+              </button>
+              <button type="submit">Edit</button>
+            </div>
+          </form>
+        </div>
+      )}
+
+      {deleteMenu && (
+        <div
+          className="DContainer"
+          onContextMenu={(e) => {
+            e.preventDefault();
+            setDeleteMenu(false);
+          }}
+        >
+          <p className="CTi">Are you sure you want to delete this category?</p>
+          <div className="DButtons">
+            <button className="DGreen" onClick={() => setDeleteMenu(false)}>
+              Cancel
+            </button>
+            <button className="DRed" onClick={handleDeleteCategory}>
+              Delete
+            </button>
           </div>
         </div>
       )}
@@ -177,7 +302,7 @@ const Categories = () => {
               <div
                 className="CLi"
                 key={category.id}
-                onContextMenu={(e) => handleContextMenu(e, category.id)}
+                onContextMenu={(e) => handleContextMenu(e, category)}
                 onClick={handleClose}
               >
                 <Link to={`/categories/${category.id}`}>

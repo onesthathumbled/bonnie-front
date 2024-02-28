@@ -9,15 +9,46 @@ import Category from "./Category";
 
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { jwtDecode } from "jwt-decode";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
 
+  const token = localStorage.getItem("authToken");
+
+  const checkTokenExpiration = () => {
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        const currentTime = Date.now() / 1000;
+
+        if (decodedToken.exp < currentTime) {
+          localStorage.removeItem("authToken");
+          localStorage.removeItem("user");
+        }
+      } catch (error) {
+        console.error("Error decoding token:", error);
+      }
+    }
+  };
+
   useEffect(() => {
-    if (!user) {
+    const tokenExpired = checkTokenExpiration();
+
+    if (tokenExpired || !user) {
       navigate("/login");
     }
+
+    const expirationCheckInterval = setInterval(() => {
+      const tokenExpired = checkTokenExpiration();
+
+      if (tokenExpired || !user) {
+        navigate("/login");
+      }
+    }, 60000);
+
+    return () => clearInterval(expirationCheckInterval);
   }, [user, navigate]);
 
   return (
