@@ -13,7 +13,7 @@ const initialState = {
 export const getTasks = createAsyncThunk("task/getAll", async (_, thunkAPI) => {
   try {
     const user_id = thunkAPI.getState().auth.user.data.id;
-    const category_id = thunkAPI.getState().category.id;
+    const category_id = thunkAPI.getState().categories.category.id;
     return await taskService.getTasks(user_id, category_id);
   } catch (error) {
     const message =

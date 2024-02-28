@@ -55,3 +55,49 @@
   border-radius: 3px;
   width: fit-content;
 }
+
+.Ttop {
+  margin-top: 30px;
+}
+
+.Ttitle {
+  font-size: 25px;
+}
+
+.Tstatus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.TCLi {
+  margin: 0 10px;
+  margin-top: 20px;
+  background-color: #1f2029;
+  border-radius: 20px;
+  padding: 20px;
+  width: 400px;
+  height: 160px;
+  display: flex;
+  justify-content: space-between;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+.TShead {
+  color: #fefefe;
+}
+
+.TStitle {
+  font-size: 18px;
+}
+
+.TSdetails {
+  color: #77777d;
+  font-size: 16px;
+}
+
+.TSheight {
+  height: 160px;
+}

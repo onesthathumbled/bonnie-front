@@ -154,16 +154,11 @@
   transition: all 0.3s;
 }
 
-.AddCButtons button:hover,
-.DGreen {
+.AddCplus {
   background-color: #43b97f !important;
 }
 
-.AddCcancel:hover {
-  background-color: #ff7575 !important;
-}
-
-.DRed {
+.AddCcancel {
   background-color: #ff7575 !important;
 }
 
@@ -191,6 +186,7 @@
   cursor: pointer;
   padding: 10px;
   font-size: 14px;
+  color: #fefefe;
   /* border-radius: 5px; */
   /* border-bottom: 2px solid #1f2029; */
   /* border-right: 2px solid #1f2029; */

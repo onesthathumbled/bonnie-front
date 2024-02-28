@@ -194,7 +194,9 @@ const Categories = () => {
               <button onClick={handleAddWindow} className="AddCcancel">
                 Cancel
               </button>
-              <button type="submit">Add</button>
+              <button type="submit" className="AddCplus">
+                Add
+              </button>
             </div>
           </form>
         </div>
@@ -230,7 +232,9 @@ const Categories = () => {
 
           <div>
             <RemoveRedEyeRoundedIcon className="OIc" />
-            <p className="OButtons">View</p>
+            <Link to={`/categories/${categoryData.id}`} className="OButtons">
+              View
+            </Link>
           </div>
         </div>
       )}
@@ -268,7 +272,9 @@ const Categories = () => {
               <button onClick={handleEditWindow} className="AddCcancel">
                 Cancel
               </button>
-              <button type="submit">Edit</button>
+              <button type="submit" className="AddCplus">
+                Edit
+              </button>
             </div>
           </form>
         </div>
@@ -284,10 +290,10 @@ const Categories = () => {
         >
           <p className="CTi">Are you sure you want to delete this category?</p>
           <div className="DButtons">
-            <button className="DGreen" onClick={() => setDeleteMenu(false)}>
+            <button className="AddCplus" onClick={() => setDeleteMenu(false)}>
               Cancel
             </button>
-            <button className="DRed" onClick={handleDeleteCategory}>
+            <button className="AddCcancel" onClick={handleDeleteCategory}>
               Delete
             </button>
           </div>
