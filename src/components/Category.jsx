@@ -18,11 +18,12 @@ const Category = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [addTaskWindow, setAddTaskWindow] = useState(false);
+  const [addTaskWindow, setAddTaskWindow] = useState(true);
   const [options, setOptions] = useState(false);
   const [formData, setFormData] = useState({
     task_name: "",
     task_details: "",
+    priority: 0,
   });
 
   const [optionPosition, setOptionPosition] = useState({
@@ -39,7 +40,7 @@ const Category = () => {
     category_details: "",
   });
 
-  const { task_name, task_details } = formData;
+  const { task_name, task_details, priority } = formData;
 
   const { category } = useSelector((state) => state.categories);
 
@@ -153,6 +154,16 @@ const Category = () => {
                 value={task_details}
                 onChange={onChange}
               ></textarea>
+            </div>
+
+            <div className="AddCFormGroup">
+              <label>Priority</label>
+              <br />
+              <select name="priority" value={priority} onChange={onChange}>
+                <option value={0}>Low</option>
+                <option value={1}>Medium</option>
+                <option value={2}>High</option>
+              </select>
             </div>
 
             <div className="AddCButtons">

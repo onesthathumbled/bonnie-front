@@ -25,6 +25,24 @@ export const getTasks = createAsyncThunk("task/getAll", async (_, thunkAPI) => {
   }
 });
 
+export const createTask = createAsyncThunk(
+  "task/create",
+  async (taskData, thunkAPI) => {
+    try {
+      const user_id = thunkAPI.getState().auth.user.data.id;
+      const category_id = thunkAPI.getState().categories.category.id;
+      return await taskService.getTasks(user_id, category_id, taskData);
+    } catch (error) {
+      const message =
+        (error.message && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const taskSlice = createSlice({
   name: "tasks",
   initialState,
@@ -38,6 +56,19 @@ export const taskSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(createTask.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createTask.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.tasks.push(action.payload);
+      })
+      .addCase(createTask.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
       .addCase(getTasks.pending, (state) => {
         state.isLoading = true;
       })
