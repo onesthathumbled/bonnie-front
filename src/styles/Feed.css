@@ -173,6 +173,7 @@
   justify-content: space-between;
   align-items: flex-start;
   box-sizing: border-box;
+  margin-bottom: 100px;
 }
 
 .BTNside {

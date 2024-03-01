@@ -91,6 +91,7 @@
 
 .TStitle {
   font-size: 18px;
+  font-weight: 500;
 }
 
 .TSdetails {
@@ -100,4 +101,22 @@
 
 .TSheight {
   height: 160px;
+}
+
+.TSpriority {
+  width: 420px;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: #272a34;
+  color: #fefefe;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.TSpriority:hover {
+  background-color: #181818;
 }

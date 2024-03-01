@@ -7,7 +7,7 @@
 
 .CFlex {
   margin-top: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   background-color: #272a34;
   padding: 20px;
   padding-top: 5px;
@@ -166,7 +166,7 @@
   position: fixed;
   z-index: 1;
   background-color: #272a34;
-  width: 120px;
+  width: 150px;
   color: #fefefe;
   border-radius: 10px;
   padding: 10px;

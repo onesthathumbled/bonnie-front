@@ -6,6 +6,8 @@ import RightBar from "./RightBar";
 import { Route, Routes } from "react-router-dom";
 import Categories from "./Categories";
 import Category from "./Category";
+import Tasks from "./Tasks";
+import Task from "./Task";
 
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -59,6 +61,11 @@ const Dashboard = () => {
         <Route path="/" element={<Feed />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/:category_id" element={<Category />} />
+        <Route path="/categories/:category_id/tasks" element={<Tasks />} />
+        <Route
+          path="/categories/:category_id/tasks/:task_id"
+          element={<Task />}
+        />
       </Routes>
       <RightBar />
     </div>
