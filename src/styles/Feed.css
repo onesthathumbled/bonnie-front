@@ -173,6 +173,7 @@
   justify-content: space-between;
   align-items: flex-start;
   box-sizing: border-box;
+  margin-bottom: 100px;
 }
 
 .BTNside {
@@ -260,15 +261,18 @@
 }
 
 .low {
-  background-color: #ffa34f;
+  /* background-color: #ffa34f; */
+  background-color: rgb(67, 185, 127);
 }
 
 .medium {
-  background-color: #43b97f;
+  /* background-color: #43b97f; */
+  background-color: rgb(255, 163, 79);
 }
 
 .high {
-  background-color: #ff7575;
+  /* background-color: #ff7575; */
+  background-color: rgb(255, 117, 117);
 }
 
 .TaskMainTitle {

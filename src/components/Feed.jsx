@@ -4,12 +4,39 @@ import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import MoreHorizRoundedIcon from "@mui/icons-material/MoreHorizRounded";
 import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
 import "../styles/Feed.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllTasks } from "../features/tasks/taskSlice";
 
 const Feed = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
+
+  const dispatch = useDispatch();
+
+  const { all_tasks } = useSelector((state) => state.tasks);
+
+  const sortedBacklog = all_tasks.filter(
+    (task) => task.completion_status === "backlog"
+  );
+  const sortedInProgress = all_tasks.filter(
+    (task) => task.completion_status === "in_progress"
+  );
+  const sortedCompleted = all_tasks.filter(
+    (task) => task.completion_status === "completed"
+  );
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await dispatch(getAllTasks());
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [dispatch]);
 
   return (
     <div className="Feed">
@@ -20,21 +47,21 @@ const Feed = () => {
             <div className="Backlog box">
               <p className="TBoxTitle">Backlog</p>
               <div className="TBoxNum">
-                | 9 <span>Task</span>
+                | {sortedBacklog.length} <span>Task</span>
               </div>
             </div>
 
             <div className="In-Progress box">
               <p className="TBoxTitle">In Progress</p>
               <div className="TBoxNum">
-                | 8 <span>Task</span>
+                | {sortedInProgress.length} <span>Task</span>
               </div>
             </div>
 
             <div className="Completed box">
               <p className="TBoxTitle">Completed</p>
               <div className="TBoxNum">
-                | 11 <span>Task</span>
+                | {sortedCompleted.length} <span>Task</span>
               </div>
             </div>
           </div>
@@ -90,60 +117,138 @@ const Feed = () => {
           <div className="BTNside">
             <button>
               <p className="ATbacklog">Backlog</p>
-              <p className="ATnum1">9</p>
+              <p className="ATnum1">{sortedBacklog.length}</p>
             </button>
             <MoreVertRoundedIcon className="ATics" />
           </div>
-          <div className="Task1">
-            <div>
-              <p className="TaskStat low">Low</p>
-              <MoreHorizRoundedIcon className="TaskMainIcs" />
-            </div>
+          {sortedBacklog &&
+            sortedBacklog.map((task) => (
+              <div className="Task1">
+                <div>
+                  <p
+                    className={`TaskStat ${
+                      task.priority === "low"
+                        ? "low"
+                        : task.priority === "medium"
+                        ? "medium"
+                        : "high"
+                    }`}
+                  >
+                    {task.priority.charAt(0).toUpperCase() +
+                      task.priority.slice(1)}
+                  </p>
+                  <MoreHorizRoundedIcon className="TaskMainIcs" />
+                </div>
 
-            <p className="TaskMainTitle">Task Title</p>
-            <p className="TaskMainSub">I want to see task details here.</p>
-            <p className="TaskMainDate">02/28/24</p>
-          </div>
+                <p className="TaskMainTitle">
+                  {" "}
+                  {(task.task_name ?? "").length > 30
+                    ? `${task.task_name.slice(0, 30)}...`
+                    : task.task_name}
+                </p>
+                <p className="TaskMainSub">
+                  {" "}
+                  {(task.task_details ?? "").length > 40
+                    ? `${task.task_details.slice(0, 40)}...`
+                    : task.task_details}
+                </p>
+                <p className="TaskMainDate">
+                  {new Date(task.created_at).toLocaleDateString()}
+                </p>
+              </div>
+            ))}
         </div>
 
         <div className="Task-In-Progress ATcon">
           <div className="BTNside">
             <button>
               <p className="ATinprogress">In Progress</p>
-              <p className="ATnum2">8</p>
+              <p className="ATnum2">{sortedInProgress.length}</p>
             </button>
             <MoreVertRoundedIcon className="ATics" />
           </div>
-          <div className="Task1 ">
-            <div>
-              <p className="TaskStat high">High</p>
-              <MoreHorizRoundedIcon className="TaskMainIcs" />
-            </div>
+          {sortedInProgress &&
+            sortedInProgress.map((task) => (
+              <div className="Task1">
+                <div>
+                  <p
+                    className={`TaskStat ${
+                      task.priority === "low"
+                        ? "low"
+                        : task.priority === "medium"
+                        ? "medium"
+                        : "high"
+                    }`}
+                  >
+                    {task.priority.charAt(0).toUpperCase() +
+                      task.priority.slice(1)}
+                  </p>
+                  <MoreHorizRoundedIcon className="TaskMainIcs" />
+                </div>
 
-            <p className="TaskMainTitle">Task Title</p>
-            <p className="TaskMainSub">I want to see task details here.</p>
-            <p className="TaskMainDate">02/28/24</p>
-          </div>
+                <p className="TaskMainTitle">
+                  {" "}
+                  {(task.task_name ?? "").length > 30
+                    ? `${task.task_name.slice(0, 30)}...`
+                    : task.task_name}
+                </p>
+                <p className="TaskMainSub">
+                  {" "}
+                  {(task.task_details ?? "").length > 40
+                    ? `${task.task_details.slice(0, 40)}...`
+                    : task.task_details}
+                </p>
+                <p className="TaskMainDate">
+                  {new Date(task.created_at).toLocaleDateString()}
+                </p>
+              </div>
+            ))}
         </div>
 
         <div className="Task-Completed ATcon">
           <div className="BTNside">
             <button>
               <p className="ATcompleted">Completed</p>
-              <p className="ATnum3">11</p>
+              <p className="ATnum3">{sortedCompleted.length}</p>
             </button>
             <MoreVertRoundedIcon className="ATics" />
           </div>
-          <div className="Task1">
-            <div>
-              <p className="TaskStat medium">Medium</p>
-              <MoreHorizRoundedIcon className="TaskMainIcs" />
-            </div>
+          {sortedCompleted &&
+            sortedCompleted.map((task) => (
+              <div className="Task1">
+                <div>
+                  <p
+                    className={`TaskStat ${
+                      task.priority === "low"
+                        ? "low"
+                        : task.priority === "medium"
+                        ? "medium"
+                        : "high"
+                    }`}
+                  >
+                    {task.priority.charAt(0).toUpperCase() +
+                      task.priority.slice(1)}
+                  </p>
+                  <MoreHorizRoundedIcon className="TaskMainIcs" />
+                </div>
 
-            <p className="TaskMainTitle">Task Title</p>
-            <p className="TaskMainSub">I want to see task details here.</p>
-            <p className="TaskMainDate">02/28/24</p>
-          </div>
+                <p className="TaskMainTitle">
+                  {" "}
+                  {(task.task_name ?? "").length > 30
+                    ? `${task.task_name.slice(0, 30)}...`
+                    : task.task_name}
+                </p>
+                <p className="TaskMainSub">
+                  {" "}
+                  {(task.task_details ?? "").length > 40
+                    ? `${task.task_details.slice(0, 40)}...`
+                    : task.task_details}
+                </p>
+                <p className="TaskMainDate">
+                  {new Date(task.created_at).toLocaleDateString()}
+                </p>
+              </div>
+            ))}
         </div>
       </div>
     </div>
