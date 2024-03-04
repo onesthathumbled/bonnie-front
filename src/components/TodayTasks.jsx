@@ -50,10 +50,10 @@ const TodayTasks = () => {
         {tasksToday.length < 1 && (
           //   <Link to={"/categories"}>
           <div
-            className="CLi middleClass"
+            className="CLi middleClass TCwhiter"
             //    onClick={handleAddWindow}
           >
-            <p>There's nothing here.</p>
+            <p>No tasks scheduled for today.</p>
             {/* <AddRoundedIcon className="midCic" fontSize="large" /> */}
             {/* <p>Add a category first.</p> */}
           </div>
