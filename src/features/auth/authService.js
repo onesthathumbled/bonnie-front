@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:4000";
+// const API_URL = "http://localhost:4000";
+const API_URL = "https://mysite-e3v9.onrender.com";
 
 const register = async (user) => {
   const response = await axios.post(`${API_URL}/signup`, { user });
