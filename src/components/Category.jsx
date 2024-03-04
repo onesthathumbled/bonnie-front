@@ -21,11 +21,13 @@ import RemoveRedEyeRoundedIcon from "@mui/icons-material/RemoveRedEyeRounded";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
+import CalendarComponent from "./CalendarComponent";
 
 const Category = () => {
   const { category_id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [dueDate, setDueDate] = useState(null);
 
   const [addTaskWindow, setAddTaskWindow] = useState(false);
   const [options, setOptions] = useState(false);
@@ -33,6 +35,7 @@ const Category = () => {
     task_name: "",
     task_details: "",
     priority: null,
+    due_date: null,
   });
 
   const [optionPosition, setOptionPosition] = useState({
@@ -48,9 +51,10 @@ const Category = () => {
     task_name: "",
     task_details: "",
     priority: null,
+    due_date: null,
   });
 
-  const { task_name, task_details, priority } = formData;
+  const { task_name, task_details, priority, due_date } = formData;
 
   const { category } = useSelector((state) => state.categories);
 
@@ -86,6 +90,7 @@ const Category = () => {
       task_name: "",
       task_details: "",
       priority: 0,
+      due_date: null,
     });
   };
 
@@ -112,12 +117,19 @@ const Category = () => {
   const handleAddTask = async (e) => {
     e.preventDefault();
 
-    if (!category_name.trim() || !category_details.trim()) {
+    if (!task_name.trim() || !task_details.trim()) {
       toast.error("All fields are required.");
       return;
     }
 
-    await dispatch(createTask(formData));
+    const taskData = {
+      task_name,
+      task_details,
+      priority,
+      due_date: dueDate,
+    };
+
+    await dispatch(createTask(taskData));
 
     dispatch(getTasks());
 
@@ -125,6 +137,7 @@ const Category = () => {
       task_name: "",
       task_details: "",
       priority: 0,
+      due_date: null,
     });
 
     setAddTaskWindow((prevState) => !prevState);
@@ -315,6 +328,11 @@ const Category = () => {
               ></textarea>
             </div>
 
+            <CalendarComponent
+              className="SoloCalendar"
+              setDueDate={setDueDate}
+            />
+
             <div className="AddCFormGroup">
               <label>Priority</label>
               <br />
@@ -418,56 +436,6 @@ const Category = () => {
                 handleTaskCompletion(status);
               }}
             >
-              {taskData.completion_status === "backlog"
-                ? "Completed"
-                : taskData.completion_status === "in_progress"
-                ? "Completed"
-                : taskData.completion_status === "completed"
-                ? "Backlog"
-                : null}
-            </p>
-          </div>
-
-          <div
-            onClick={() => {
-              setEditMenu(true);
-              setOptions(false);
-            }}
-          >
-            {/* <EditRoundedIcon className="OIc" /> */}
-            {taskData.completion_status === "backlog" ? (
-              <DirectionsRunIcon className="OIc" />
-            ) : taskData.completion_status === "in_progress" ? (
-              <PendingActionsIcon className="OIc" />
-            ) : taskData.completion_status === "completed" ? (
-              <DirectionsRunIcon className="OIc" />
-            ) : null}
-            <p className="OButtons">
-              {taskData.completion_status === "backlog"
-                ? "In Progress"
-                : taskData.completion_status === "in_progress"
-                ? "Backlog"
-                : taskData.completion_status === "completed"
-                ? "In Progress"
-                : null}
-            </p>
-          </div>
-
-          <div
-            onClick={() => {
-              setEditMenu(true);
-              setOptions(false);
-            }}
-          >
-            {/* <EditRoundedIcon className="OIc" /> */}
-            {taskData.completion_status === "backlog" ? (
-              <CheckCircleIcon className="OIc" />
-            ) : taskData.completion_status === "in_progress" ? (
-              <CheckCircleIcon className="OIc" />
-            ) : taskData.completion_status === "completed" ? (
-              <PendingActionsIcon className="OIc" />
-            ) : null}
-            <p className="OButtons">
               {taskData.completion_status === "backlog"
                 ? "Completed"
                 : taskData.completion_status === "in_progress"

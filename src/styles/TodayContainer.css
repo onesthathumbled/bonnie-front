@@ -1,0 +1,16 @@
+.TodayContainer {
+  margin-top: 20px;
+  margin-bottom: -60px;
+}
+
+.TCp {
+  color: #fefefe;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.TCwhiter {
+  height: 200px !important;
+  width: 416px !important;
+}

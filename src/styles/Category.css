@@ -155,3 +155,14 @@
 .TSpriority:hover {
   background-color: #181818;
 }
+
+.SoloCalendar {
+  position: absolute;
+  top: 260px;
+  right: 350px;
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  background-color: red;
+}

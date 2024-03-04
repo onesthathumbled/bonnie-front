@@ -6,6 +6,7 @@ import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
 import "../styles/Feed.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllTasks } from "../features/tasks/taskSlice";
+import TodayTasks from "./TodayTasks";
 
 const Feed = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
@@ -69,7 +70,7 @@ const Feed = () => {
 
         <div className="Category">
           <div className="CategoryFlex">
-            <p className="CategoryP">Category Task</p>
+            <p className="CategoryP">Categories</p>
             <a href="/" className="CategoryA">
               See All Category
             </a>
@@ -98,6 +99,8 @@ const Feed = () => {
       </div>
 
       <div className="Justline"></div>
+
+      <TodayTasks />
 
       <div className="AllMyTasks">
         <div className="AMTcontainer">
