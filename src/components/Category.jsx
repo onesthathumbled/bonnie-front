@@ -434,6 +434,56 @@ const Category = () => {
               setOptions(false);
             }}
           >
+            {/* <EditRoundedIcon className="OIc" /> */}
+            {taskData.completion_status === "backlog" ? (
+              <DirectionsRunIcon className="OIc" />
+            ) : taskData.completion_status === "in_progress" ? (
+              <PendingActionsIcon className="OIc" />
+            ) : taskData.completion_status === "completed" ? (
+              <DirectionsRunIcon className="OIc" />
+            ) : null}
+            <p className="OButtons">
+              {taskData.completion_status === "backlog"
+                ? "In Progress"
+                : taskData.completion_status === "in_progress"
+                ? "Backlog"
+                : taskData.completion_status === "completed"
+                ? "In Progress"
+                : null}
+            </p>
+          </div>
+
+          <div
+            onClick={() => {
+              setEditMenu(true);
+              setOptions(false);
+            }}
+          >
+            {/* <EditRoundedIcon className="OIc" /> */}
+            {taskData.completion_status === "backlog" ? (
+              <CheckCircleIcon className="OIc" />
+            ) : taskData.completion_status === "in_progress" ? (
+              <CheckCircleIcon className="OIc" />
+            ) : taskData.completion_status === "completed" ? (
+              <PendingActionsIcon className="OIc" />
+            ) : null}
+            <p className="OButtons">
+              {taskData.completion_status === "backlog"
+                ? "Completed"
+                : taskData.completion_status === "in_progress"
+                ? "Completed"
+                : taskData.completion_status === "completed"
+                ? "Backlog"
+                : null}
+            </p>
+          </div>
+
+          <div
+            onClick={() => {
+              setEditMenu(true);
+              setOptions(false);
+            }}
+          >
             <EditRoundedIcon className="OIc" />
             <p className="OButtons">Edit</p>
           </div>
