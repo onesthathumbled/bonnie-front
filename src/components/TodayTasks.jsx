@@ -47,7 +47,7 @@ const TodayTasks = () => {
     <div className="TodayContainer">
       <div className="AMTtitle TCp">Tasks Today</div>
       <div className="CFlex TCFlex">
-        {all_tasks < 1 && (
+        {tasksToday.length < 1 && (
           //   <Link to={"/categories"}>
           <div
             className="CLi middleClass"
