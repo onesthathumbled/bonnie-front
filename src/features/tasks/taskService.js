@@ -18,7 +18,7 @@ const createTask = async (user_id, category_id, task) => {
   };
 
   const response = await axios.post(
-    `${API_URL}/api/v1/users/${user_id}/categories/${category_id}/tasks`,
+    `${API_URL}/api/v1/categories/${category_id}/tasks`,
     { task },
     config
   );
@@ -60,7 +60,7 @@ const getTasks = async (user_id, category_id) => {
   };
 
   const response = await axios.get(
-    `${API_URL}/api/v1/users/${user_id}/categories/${category_id}/tasks`,
+    `${API_URL}/api/v1/categories/${category_id}/tasks`,
     config
   );
 
@@ -88,7 +88,7 @@ const editTask = async (user_id, category_id, task_id, task) => {
   };
 
   const response = await axios.patch(
-    `${API_URL}/api/v1/users/${user_id}/categories/${category_id}/tasks/${task_id}`,
+    `${API_URL}/api/v1/categories/${category_id}/tasks/${task_id}`,
     { task: allowedAttributes },
     config
   );
@@ -115,7 +115,7 @@ const taskCompletion = async (user_id, category_id, task_id, task_status) => {
   };
 
   const response = await axios.patch(
-    `${API_URL}/api/v1/users/${user_id}/categories/${category_id}/tasks/${task_id}`,
+    `${API_URL}/api/v1/categories/${category_id}/tasks/${task_id}`,
     { task: status },
     config
   );
@@ -137,7 +137,7 @@ const deleteTask = async (user_id, category_id, task_id) => {
   };
 
   const response = await axios.delete(
-    `${API_URL}/api/v1/users/${user_id}/categories/${category_id}/tasks/${task_id}`,
+    `${API_URL}/api/v1/categories/${category_id}/tasks/${task_id}`,
     config
   );
 

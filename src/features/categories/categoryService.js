@@ -17,7 +17,7 @@ const createCategory = async (user_id, category) => {
   };
 
   const response = await axios.post(
-    `${API_URL}/api/v1/users/${user_id}/categories`,
+    `${API_URL}/api/v1/categories`,
     { category },
     config
   );
@@ -38,10 +38,7 @@ const getCategories = async (user_id) => {
     },
   };
 
-  const response = await axios.get(
-    `${API_URL}/api/v1/users/${user_id}/categories`,
-    config
-  );
+  const response = await axios.get(`${API_URL}/api/v1/categories`, config);
 
   return response.data;
 };
@@ -60,7 +57,7 @@ const getCategory = async (user_id, id) => {
   };
 
   const response = await axios.get(
-    `${API_URL}/api/v1/users/${user_id}/categories/${id}`,
+    `${API_URL}/api/v1/categories/${id}`,
     config
   );
 
@@ -86,7 +83,7 @@ const editCategory = async (user_id, id, category) => {
   };
 
   const response = await axios.patch(
-    `${API_URL}/api/v1/users/${user_id}/categories/${id}`,
+    `${API_URL}/api/v1/categories/${id}`,
     { category: allowedAttributes },
     config
   );
@@ -108,7 +105,7 @@ const deleteCategory = async (user_id, id) => {
   };
 
   const response = await axios.delete(
-    `${API_URL}/api/v1/users/${user_id}/categories/${id}`,
+    `${API_URL}/api/v1/categories/${id}`,
     config
   );
 
